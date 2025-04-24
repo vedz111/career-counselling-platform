@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Counselling Guide</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/chatbot.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/landing_page.css') }}" />
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo"><a href="landing_page.html">Guide</a></div>
+      <button class="signin">Sign in</button>
+    </header>
+
+    <ul class="sidebar" style="flex-grow: 2">
+      <li><a class="sidenav" href="#">Meeting Room</a></li>
+      <li><a class="sidenav" href="chatbot.html">Chatbot</a></li>
+      <li><a class="sidenav" href="#">Stats for Nerds</a></li>
+    </ul>
+
+    <div class="main" style="flex-grow: 8">
+      <div class="row">
+        <div class="col-md-10 mr-auto ml-auto">
+          <h1>Dentrice AI ChatBot</h1>
+          <form>
+            <div id="chatbox">
+              <div class="col-md-8 ml-auto mr-auto">
+                <p class="botText"><span>Hi! I'm Your bot.</span></p>
+              </div>
+            </div>
+            <div id="userInput" class="row">
+              <div class="col-md-10">
+                <input
+                  id="text"
+                  type="text"
+                  name="msg"
+                  placeholder="Message"
+                  class="form-control"
+                />
+                <button type="submit" id="send" class="btn btn-warning">
+                  Send
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <script>
+        $(document).ready(function () {
+          $("form").on("submit", function (event) {
+            var rawText = $("#text").val();
+            var userHtml =
+              '<p class="userText"><span>' + rawText + "</span></p>";
+            $("#text").val("");
+            $("#chatbox").append(userHtml);
+            document.getElementById("userInput").scrollIntoView({
+              block: "start",
+              behavior: "smooth",
+            });
+            $.ajax({
+              data: {
+                msg: rawText,
+              },
+              type: "POST",
+              url: "/get",
+            }).done(function (data) {
+              var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+              $("#chatbox").append($.parseHTML(botHtml));
+              document.getElementById("userInput").scrollIntoView({
+                block: "start",
+                behavior: "smooth",
+              });
+            });
+            event.preventDefault();
+          });
+        });
+      </script>
+    </div>
+
+    <footer>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Socials</a>
+    </footer>
+  </body>
+</html>

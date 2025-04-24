@@ -1,0 +1,124 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+}
+
+.sidebar {
+    width: 15%;
+    float: left;   
+}
+
+ul {
+    padding: 0px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    z-index: 1;
+}
+
+.sidenav {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    margin: 5px;
+    background: lightgrey;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.main {
+    text-align: center;
+    margin-left: 20%;
+    padding-right: 20%
+}
+
+
+.header {
+    position: sticky;
+    font-size: 20px;
+}
+
+.menubutton{
+    padding: 20px;
+    margin: 5px;
+    background-color: lightblue;
+    text-align: center;
+    border: 5px;
+    cursor: pointer;
+}
+
+.signin {
+    padding: 10px;
+    height: 50px;
+    border: none;
+    background-color: blueviolet;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.logo {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-size: 80px;
+    font-style: normal;
+    text-decoration: none;
+    color: blueviolet;
+}
+
+.homepagebg {
+    background-image: url("cc1.jpg");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom;
+}
+
+.mainhead{
+    width: inherit;
+    font-size: 30px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+}
+  
+.subtext{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 24px;   
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 50%;
+    margin-left: 25%;
+}
+
+footer a{
+    text-align: center;
+    margin: 15px;
+    padding: auto;
+    font-size: 25px;
+    margin: 5px;
+    color: brown;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer a:active, a:visited {
+    text-decoration: none;
+}
